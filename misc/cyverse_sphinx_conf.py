@@ -9,8 +9,8 @@ extensions = [
     'sphinx.ext.autodoc',
 ]
 
-project = 'YOUR PROJECT NAME HERE as topic_tutorial'
-copyright = '2017, CyVerse'
+project = 'BioInfoSummer18 - Advanced Kallisto RNA-Seq (Bulk and Single Cell)'
+copyright = '2018, CyVerse'
 author = 'CyVerse'
 version = '1.0'
 release = '1.0'

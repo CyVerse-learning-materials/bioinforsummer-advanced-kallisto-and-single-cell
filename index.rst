@@ -5,20 +5,23 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-**TUTORIAL NAME**
-=================
-
-..
-    #### Comment: Use short, imperative titles e.g. Upload and share data, uploading and
-    sharing data ####
+**BioInfoSummer18 - Advanced Kallisto RNA-Seq (Bulk and Single Cell)**
+========================================================================
 
 Goal
 ----
+This draft tutorial will introduce some of the features of the |Kallisto| and
+|Sleuth| tools for RNA-Sequencing of bulk and single-cell samples.
 
-..
-    #### Comment: Avoid covering upstream and downstream steps that are not explicitly and
-    necessarily part of the tutorial - write or link to separate quick
-    starts/tutorials for those parts ####
+.. warning::
+   This tutorial is still in its draft form. These datasets are not
+   yet available on the CyVerse Data Store, but are available on an
+   Amazon AMI and docker container. These will later be migrated to
+   |VICE|. Additionally, these materials are part of a workshop collection
+   and not yet designed for independent use. These should not be relied
+   on for analysis of your own data - they are merely useful examples that
+   can inform your own analysis.
+
 
 ----
 
@@ -26,13 +29,6 @@ Goal
 	:maxdepth: 2
 
 	Tutorial home <self>
-	Step One <step1.rst>
-	Delete this example guide page <example_directives_delete.rst>
-..
-	#### Comment:This tutorial can have multiple pages. The table of contents assumes
-	you have an additional page called 'Step One' with content located in 'step1.rst'
-	Edit these titles and filenames as needed ####
-
 
 Prerequisites
 -------------
@@ -54,12 +50,12 @@ Downloads, access, and services
     * - CyVerse account
       - You will need a CyVerse account to complete this exercise
       - |CyVerse User Portal|
-    * - Atmosphere access
-      - You must have access to Atmosphere
-      - |CyVerse User Portal|
-    * - Cyberduck
-      - Standalone software for upload/download to Data Store
-      - |Download Cyberduck|
+    * - Docker
+      - You must have access to Docker to run this tutorial
+      - |Dockerhub|
+    * - Amazon AWS Account
+      - You can run this tutorial from this AMI:
+      - ami-042909f3c5b9bf6ed
 
 Platform(s)
 ~~~~~~~~~~~
@@ -87,91 +83,85 @@ Platform(s)
       - |Discovery Environment|
       - |DE Manual|
       - |Discovery Environment Guide|
-    * - Atmosphere
-      - Command line (ssh) and/or Desktop (VNC)
-      - |Atmosphere|
-      - |Atmosphere Manual|
-      - |Atmosphere Guide|
-    * - BisQue
-      - Web/Point-and-click and/or Command-line (API)
-      - |BisQue|
-      - |BisQue Manual|
-      - (See Manual)
-    * - DNA Subway
-      - Web/Point-and-click
-      - |DNA Subway|
-      - (See Guide)
-      - |DNA Subway Guide|
-    * - SciApps
-      - Command-line (API)
-      - |SciApps|
-      - (See Guide)
-      - |SciApps Guide|
-    * - Agave API
-      - Command-line (API)
-      - |Agave API|
-      - |Agave Live Docs|
-      - (See Live Docs)
+    * - VICE
+      - A flexible environment for using Jupyterlab, RStudio, and RShiny
+      -
+      - |Vice Documentation|
+      -
 
-Application(s) used
-~~~~~~~~~~~~~~~~~~~
-..
-	#### Comment: these tables are examples, delete whatever is unnecessary ####
 
-**Discovery Environment App(s):**
+Important links for this workshop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Workshop logistics
+````````````````````````
 
 .. list-table::
     :header-rows: 1
 
-    * - App name
-      - Version
-      - Description
-      - App link
-      - Notes/other links
-    * - Muscle
-      - 3.8.31
-      - Multiple sequence aligner
-      -	|DE Application URL|
-      - |Original App Documentation|
-
-
-**Atmosphere Image(s):**
-
-.. list-table::
-    :header-rows: 1
-
-    * - Image name
-      - Version
-      - Description
+    * - Resource/Description
       - Link
-      - Notes/other links
-    * - CyVerse CentOS 6.8 GUI Base
-      - 1.0
-      - base image CentOS 6.8 with GNOME GUI
-      - |Atmosphere Image|
-      -
+    * - Gitter channel - we will have live chat and share through this channel
+      - |Gitter|
+    * - Opening poll
+      - |Google opening poll|
 
+Software resources
+````````````````````
+.. list-table::
+    :header-rows: 1
 
+    * - Resource/Description
+      - Link
+    * - Bioconductor - resource for R-based bioinformatics tools
+      - |Bioconductor|
+    * - Bioconda - Reproducible software installation
+      - |Bioconda|
+    * - CyVerse Learning Center - CyVerse learning materials
+      - |CyVerse Learning Center|
 
-Input and example data
-~~~~~~~~~~~~~~~~~~~~~~
+Papers
+```````
+.. list-table::
+    :header-rows: 1
 
-*In order to complete this tutorial you will need to have the following inputs prepared*
+    * - Resource/Description
+      - Link
+    * - A survey of best practices for RNA-seq data analysis
+      - |Conesa|
+    * - Fast and accurate single-cell RNA-seq analysis by clustering of transcript-compatibility counts
+      - |Ntranos|
+    * - Differential analysis of RNA-seq incorporating quantification uncertainty
+      - |Pimentel|
+    * - Tackling the widespread and critical impact of batch effects in high-throughput data
+      - |Leek|
+    * - AmpUMI: design and analysis of unique molecular identifiers for deep amplicon sequencing
+      - |Clement|
+    * - Tutorial: guidelines for the experimental design of single-cell RNA sequencing studies
+      - |lafzi|
 
-..
-	#### comment: delete any row not needed in this table ####
+Other learning resources
+`````````````````````````
 
 .. list-table::
     :header-rows: 1
 
-    * - Input File(s)
-      - Format
-      - Preparation/Notes
-      - Example Data
-    * -
-      -
-      -
-      -
+    * - Resource/Description
+      - Link
+    * - Hemberg single cell RNA-Seq wiki (very comprehensive)
+      - |Hemberg wiki|
+    * - How to Use t-SNE Effectively
+      - |tsne|
+    * - Dana Pe'er: "Having fun with single-cell RNA-seq: imputation and manifolds"
+      - |peer|
+    * - Lior Pachter: Differential analysis of count data in genomics
+      - |Pachter|
+    * - Principal Component Analysis (PCA) clearly explained (2015)
+      - |statquest|
+    * - Single-cell RNA-Seq tools
+      - |SC Tools|
+    * - Seurat pipeline for SC RNA-Seq
+      - |Seurat|
 
 ----
 
@@ -220,7 +210,7 @@ Post your question to the user forum:
 
 .. |Github Repo Link|  raw:: html
 
-   <a href="FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX" target="blank">Github Repo Link</a>
+   <a href="https://github.com/CyVerse-learning-materials/bioinforsummer-advanced-kallisto-and-single-cell" target="blank">Github Repo Link</a>
 
 .. |Download Cyberduck| raw:: html
 
@@ -237,3 +227,95 @@ Post your question to the user forum:
 .. |Atmosphere Image|  raw:: html
 
    <a href="https://atmo.cyverse.org/application/images/1384" target="blank">Atmosphere Image</a>
+
+.. |Vice Documentation| raw:: html
+
+   <a href="https://cyverse-visual-interactive-computing-environment.readthedocs-hosted.com/en/latest/index.html" target="blank">Vice Documentation</a>
+
+.. |Kallisto| raw:: html
+
+   <a href="https://pachterlab.github.io/kallisto/" target="blank">Kallisto</a>
+
+.. |Sleuth| raw:: html
+
+   <a href="https://pachterlab.github.io/sleuth/" target="blank">Sleuth</a>
+
+.. |Gitter| raw:: html
+
+   <a href="https://gitter.im/BioInfoSummer-kallisto/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link" target="blank">Gitter channel for chat</a>
+
+.. |Google opening poll| raw:: html
+
+   <a href="https://goo.gl/forms/GfwkIU3IFRWBwcxm1" target="blank">Google opening poll</a>
+
+.. |Bioconductor| raw:: html
+
+   <a href="http://bioconductor.org/" target="blank">Bioconductor</a>
+
+.. |Bioconda| raw:: html
+
+   <a href="https://bioconda.github.io/" target="blank">Bioconda</a>
+
+.. |CyVerse Learning Center| raw:: html
+
+   <a href="http://learning.cyverse.org/en/latest/" target="blank">CyVerse Learning Center</a>
+
+.. |Conesa| raw:: html
+
+   <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8" target="blank">Conesa</a>
+
+.. |Ntranos| raw:: html
+
+   <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0970-8" target="blank">Ntranos</a>
+
+.. |Pimentel| raw:: html
+
+   <a href="https://www.nature.com/articles/nmeth.4324" target="blank">Pimentel</a>
+
+.. |Leek| raw:: html
+
+   <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3880143/" target="blank">Leek</a>
+
+.. |Clement| raw:: html
+
+   <a href="https://academic.oup.com/bioinformatics/article/34/13/i202/5045706" target="blank">Clement</a>
+
+.. |lafzi| raw:: html
+
+   <a href="https://www.nature.com/articles/s41596-018-0073-y" target="blank">lafzi</a>
+
+.. |Hemberg wiki| raw:: html
+
+   <a href="https://hemberg-lab.github.io/scRNA.seq.course/index.html" target="blank">Hemberg wiki</a>
+
+.. |tsne| raw:: html
+
+   <a href="https://distill.pub/2016/misread-tsne/" target="blank">tsne</a>
+
+.. |peer| raw:: html
+
+   <a href="https://www.youtube.com/watch?v=8KpIDpPEGV4" target="blank">Pe'er (YouTube)</a>
+
+.. |Pachter| raw:: html
+
+   <a href="https://www.youtube.com/watch?v=ucPBBTjH5EE" target="blank">Pachter (YouTube)</a>
+
+.. |statquest| raw:: html
+
+   <a href="https://www.youtube.com/watch?v=_UVHneBUBW0" target="blank">Statquest (YouTube)</a>
+
+.. |SC Tools| raw:: html
+
+   <a href="https://www.scrna-tools.org/" target="blank">SC Tools</a>
+
+.. |Seurat| raw:: html
+
+   <a href="https://satijalab.org/seurat/" target="blank">Seurat</a>
+
+.. |VICE| raw:: html
+
+   <a href="https://cyverse-visual-interactive-computing-environment.readthedocs-hosted.com/en/latest/index.html" target="blank">VICE</a>
+
+.. |Dockerhub| raw:: html
+
+   <a href="https://hub.docker.com/r/jasonjwilliamsny/single-cell-training" target="blank">Dockerhub</a>
