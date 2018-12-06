@@ -148,6 +148,8 @@ Other learning resources
 
     * - Resource/Description
       - Link
+    * - BioInfoSummer Workshop slides
+      - |slides|
     * - Hemberg single cell RNA-Seq wiki (very comprehensive)
       - |Hemberg wiki|
     * - How to Use t-SNE Effectively
@@ -319,3 +321,7 @@ Post your question to the user forum:
 .. |Dockerhub| raw:: html
 
    <a href="https://hub.docker.com/r/jasonjwilliamsny/single-cell-training" target="blank">Dockerhub</a>
+
+.. |slides| raw:: html
+
+   <a href="https://de.cyverse.org/dl/d/3C1C5CB9-DBB4-425F-90AD-3865928243B7/BioInfoSummer18_RNA-seq.pptx" target="blank">Slides</a>
